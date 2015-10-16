@@ -1,0 +1,45 @@
+<html ng-app ="mainApp">
+<head>
+	<script src = "https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.5/angular.js"></script>
+</head>
+
+
+<body ng-controller ="mainController">
+<input type ="checkbox" name="Quiz On" ng-model = "quizOn"> Quiz! <br>
+<input type ="checkbox" name="Translate On" ng-model = "translateOn"> Translate! <br>
+
+
+<div ng-if = "translateOn">
+	<form ng-submit = "submit()">
+		<input ng-model = "$parent.languageBefore" type = "text" placeholder = "Language Before">
+		<input ng-model = "$parent.languageAfter" type = "text" placeholder = "Language After">
+		<input ng-model = "$parent.wordBefore" type = "text" placeholder = "Word Before Translation">
+		<p ng-bind = "$parent.wordAfter"></p>
+		<p ng-if = "error"> No Translation Found </p>
+		<input type = "submit">
+	</form>
+</div>
+
+
+<br>
+<br>
+<br>
+
+<div ng-if = "quizOn">
+<input ng-model = "$parent.languageSelection" type = "text" placeholder = "Language Selection">
+<br>
+	<form ng-submit = "quizSubmit()">
+		<p ng-bind = "$parent.currentword"></p>
+		<input ng-model = "$parent.quizAnswer" type = "text" placeholder = "Answer">
+		<input type = "submit">
+	</form>
+
+<p> {{quizResponse }}</p>
+</div>
+
+
+
+</body>
+	<script type = "text/javascript" src = "/js/main.js"></script>
+</html>
+
